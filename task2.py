@@ -7,6 +7,9 @@ def main():
     factors = []
     myNumber = 24
 
+    for i in range(myNumber):
+        if (mynumbers)
+
 
 if __name__ == "__main__":
     main()

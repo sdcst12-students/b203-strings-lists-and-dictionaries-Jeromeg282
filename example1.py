@@ -4,7 +4,7 @@
 Using the "in" operator to search tuples, lists, strings and dicts
 This can tell you if a particular value can be found in a list, tuple or string, but it can only find keys in dictionaries
 '''
-
+#c is the key
 a = (3,4,5,6,7)
 b = [3,4,5,6,7]
 c = {
