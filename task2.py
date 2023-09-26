@@ -7,8 +7,9 @@ def main():
     factors = []
     myNumber = 24
 
-    for i in range(myNumber):
-        if (mynumbers)
+    for i in range(1, myNumber + 1):
+        if myNumber%1==0:
+            factors.append(i)
 
 
 if __name__ == "__main__":

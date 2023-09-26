@@ -8,3 +8,10 @@ Write a python script display the values of the dictionary
 (3 points)
 """
 sortMe = {1: -2, 2: 6, 4: 0, 6: 1, 9: 2, 10: 3, 11: 0, 13: 3, 14: 4, 15: -2, 17: 0, 18: -1, 20: 3}
+sortedkeys=sorted(sortMe.items())
+for key, value in sortedkeys:
+    print(f"{key}: {value}")
+
+sortedvalue=sorted(sortMe.items(), key=lambda item:item[1])
+for key, value in sortedvalue:
+    print(f"{key}: {value}")

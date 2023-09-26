@@ -36,3 +36,30 @@ You have:
  3 wood
  >
 """
+
+inventory={}
+items= {
+    "food": "food",
+    "water": "water",
+    "rope": "rope",
+    "torch": "torch",
+    "sack": "sack",
+    "wood": "wood",
+    "iron": "iron",
+    "steel": "steel",
+    "ginger": "ginger",
+    "garlic": "garlic",
+    "fish": "fish",
+    "stone": "stone",
+    "wool": "wool",
+
+}
+
+
+def additem(item, count=1):
+    if item in inventory:
+        inventory[item] += count
+    else:
+        inventory[item] = count
+
+additem()
