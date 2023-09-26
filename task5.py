@@ -39,19 +39,19 @@ You have:
 
 inventory={}
 items= {
-    "food": "food",
-    "water": "water",
-    "rope": "rope",
-    "torch": "torch",
-    "sack": "sack",
-    "wood": "wood",
-    "iron": "iron",
-    "steel": "steel",
-    "ginger": "ginger",
-    "garlic": "garlic",
-    "fish": "fish",
-    "stone": "stone",
-    "wool": "wool",
+    "food": 0,
+    "water": 0,
+    "rope": 0,
+    "torch": 0,
+    "sack": 0,
+    "wood": 0,
+    "iron": 0,
+    "steel": 0,
+    "ginger": 0,
+    "garlic": 0,
+    "fish": 0,
+    "stone": 0,
+    "wool": 0,
 
 }
 
