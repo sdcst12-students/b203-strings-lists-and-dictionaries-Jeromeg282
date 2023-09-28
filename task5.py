@@ -56,10 +56,16 @@ items= {
 }
 
 
-def additem(item, count=1):
-    if item in inventory:
-        inventory[item] += count
-    else:
-        inventory[item] = count
+while True:
+    action=input("Enter 'get [item]' to add an item to inventory, 'drop [item]' to drop it, and 'inventory' to view your inventory: ")
+    action=action.lower().split()
 
-additem()
+    if len(action)==2:
+        command, item=action
+        if command=="get":
+            inventory[item]= inventory.get(item, 0)+1
+            print(f"You got 1 {item}")
+        elif command == "drop":
+            if item in inventory and inventory[item] > 0:
+                inventory[item] -= 1
+                print(f"You dropped 1 {item}")
