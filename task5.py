@@ -69,3 +69,14 @@ while True:
             if item in inventory and inventory[item] > 0:
                 inventory[item] -= 1
                 print(f"You dropped 1 {item}")
+            else:
+                print("Item not in your inventory.")
+        else:
+            print("Please use 'get [item], 'drop [item], or inventor command. ")
+
+    elif action==["inventory"]:
+        print("Your inventory: ")
+        for item, quantity in inventory.items():
+            print(f"{quantity} {item}")
+    else:
+        print("Please use 'get [item], 'drop [item], or inventor command. ")
