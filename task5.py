@@ -37,46 +37,72 @@ You have:
  >
 """
 
-inventory={}
-items= {
-    "food": 0,
-    "water": 0,
-    "rope": 0,
-    "torch": 0,
-    "sack": 0,
-    "wood": 0,
-    "iron": 0,
-    "steel": 0,
-    "ginger": 0,
-    "garlic": 0,
-    "fish": 0,
-    "stone": 0,
-    "wool": 0,
-
+possible_items = {
+    "food": "food",
+    "water": "water",
+    "rope": "rope",
+    "torch": "torch",
+    "sack": "sack",
+    "wood": "wood",
+    "iron": "iron",
+    "steel": "steel",
+    "ginger": "ginger",
+    "garlic": "garlic",
+    "fish": "fish",
+    "stone": "stone",
+    "wool": "wool"
 }
 
+inventory = {}
+
+def display_possible_items():
+    print("Possible items to get:")
+    print("\n".join(possible_items.values()))
 
 while True:
-    action=input("Enter 'get [item]' to add an item to inventory, 'drop [item]' to drop it, and 'inventory' to view your inventory: ")
-    action=action.lower().split()
+    action = input("Enter an action (get item, drop item, inventory, possible, or exit): ").lower()
 
-    if len(action)==2:
-        command, item=action
-        if command=="get":
-            inventory[item]= inventory.get(item, 0)+1
-            print(f"You got 1 {item}")
-        elif command == "drop":
-            if item in inventory and inventory[item] > 0:
-                inventory[item] -= 1
-                print(f"You dropped 1 {item}")
-            else:
-                print("Item not in your inventory.")
+    if action == "get item":
+        display_possible_items()
+        item = input("Enter the item you want to add to your inventory: ").lower()
+        quantity = 1 if not item.split()[0].isdigit() else int(item.split()[0])
+        item = " ".join(item.split()[1:]) if len(item.split()) > 1 else item
+
+        item = next((full_name for known_item, full_name in possible_items.items() if item in known_item or item in full_name), None)
+
+        if item:
+            inventory[item] = inventory.get(item, 0) + quantity
+            print(f"You got {quantity} {item}.")
         else:
-            print("Please use 'get [item], 'drop [item], or inventor command. ")
+            print("Unknown item. Please enter a valid item.")
 
-    elif action==["inventory"]:
-        print("Your inventory: ")
-        for item, quantity in inventory.items():
-            print(f"{quantity} {item}")
+    elif action == "drop item":
+        item = input("Enter the item you want to drop from your inventory: ").lower()
+        item = next((full_name for known_item, full_name in possible_items.items() if item in known_item or item in full_name), None)
+
+        if item in inventory:
+            quantity = int(input(f"How many {item} do you want to drop? (You have {inventory[item]}): "))
+            if quantity >= inventory[item]:
+                del inventory[item]
+            else:
+                inventory[item] -= quantity
+            print(f"You dropped {quantity} {item}.")
+        else:
+            print("You don't have that item in your inventory.")
+
+    elif action == "inventory":
+        if inventory:
+            print("Your inventory:")
+            for item, quantity in inventory.items():
+                print(f"{quantity} {item}")
+        else:
+            print("Your inventory is empty.")
+
+    elif action == "possible":
+        display_possible_items()
+
+    elif action == "exit":
+        break
+
     else:
-        print("Please use 'get [item], 'drop [item], or inventor command. ")
+        print("Invalid action. Please choose from 'get item', 'drop item', 'inventory', 'possible', or 'exit'.")
